@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: todoapp
-        image: ikulyk404/todoapp:3.0.0
+        image: ikocherovets/todoapp:3.0.0
         resources:
           requests:
             memory: "256Mi"

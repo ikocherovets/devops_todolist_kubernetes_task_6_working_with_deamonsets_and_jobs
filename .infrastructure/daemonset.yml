@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: todoapp-daemonset
+  namespace: mateapp
+spec:
+  selector:
+    matchLabels:
+      app: todoapp-daemonset
+  template:
+    metadata:
+      labels:
+        app: todoapp-daemonset
+    spec:
+      containers:
+      - name: busybox
+        image: busybox-curl:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        command:
+        - /bin/sh
+        - -c
+        - while true; do curl -s http://todoapp-service:80/; sleep 5; done
